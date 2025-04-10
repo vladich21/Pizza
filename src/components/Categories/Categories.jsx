@@ -1,13 +1,4 @@
-// import { useState } from "react";
-
 function Categories({ value, onChangeCategory }) {
-  console.log(value);
-  // const [activeIndex, setActiveIndex] = useState(5);
-
-  // const onClickCategory = (index) => {
-  //   setActiveIndex(index);
-  // };
-
   const categories = [
     "Все",
     "Мясные",
