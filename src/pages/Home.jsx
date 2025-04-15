@@ -13,7 +13,7 @@ import {
 } from "../redux/filterSlice";
 import { fetchPizzas, selectPizzaData } from "../redux/pizzaSlice";
 import qs from "qs";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Home = () => {
   const { categoryId, sort, currentPage, searchValue } =
@@ -40,7 +40,11 @@ const Home = () => {
       }
       return false;
     })
-    .map((obj) => <PizzaBlock key={obj.id} {...obj} />);
+    .map((obj) => (
+      <Link key={obj.id} to={`/pizza/${obj.id}`}>
+        <PizzaBlock {...obj} />
+      </Link>
+    ));
 
   const skeleton = [...new Array(6)].map((_, index) => (
     <Skeleton key={index} />
