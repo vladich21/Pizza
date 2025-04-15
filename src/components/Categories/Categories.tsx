@@ -11,6 +11,7 @@ const categories = [
   "Острые",
   "Закрытые",
 ];
+
 const Categories: React.FC<CategoriesProps> = ({ value, onChangeCategory }) => {
   return (
     <div className="categories">
