@@ -15,7 +15,7 @@ import { fetchPizzas, selectPizzaData } from "../redux/pizzaSlice";
 import qs from "qs";
 import { Link, useNavigate } from "react-router-dom";
 
-const Home = () => {
+const Home: React.FC = () => {
   const { categoryId, sort, currentPage, searchValue } =
     useSelector(selectFilter);
   const { items, status } = useSelector(selectPizzaData);
@@ -25,22 +25,22 @@ const Home = () => {
   const isMounted = useRef(false);
   const isSearch = useRef(false);
 
-  const onChangeCategory = (id) => {
-    dispatch(setCategoryId(id));
+  const onChangeCategory = (idx: number) => {
+    dispatch(setCategoryId(idx));
   };
 
-  const onChangePage = (number) => {
-    dispatch(setCurrentPage(number));
+  const onChangePage = (page: number) => {
+    dispatch(setCurrentPage(page));
   };
 
   const pizzas = items
-    .filter((obj) => {
+    .filter((obj: any) => {
       if (obj.title.toLowerCase().includes(searchValue.toLowerCase())) {
         return true;
       }
       return false;
     })
-    .map((obj) => (
+    .map((obj: any) => (
       <Link key={obj.id} to={`/pizza/${obj.id}`}>
         <PizzaBlock {...obj} />
       </Link>
@@ -57,6 +57,7 @@ const Home = () => {
     const search = searchValue > 0 ? `&search=${searchValue}` : "";
 
     dispatch(
+      //@ts-ignore
       fetchPizzas({
         order,
         sortBy,
@@ -105,7 +106,7 @@ const Home = () => {
         <div className="content__top">
           <Categories
             value={categoryId}
-            onChangeCategory={(i) => onChangeCategory(i)}
+            onChangeCategory={(i: any) => onChangeCategory(i)}
           />
           <Sort />
         </div>
