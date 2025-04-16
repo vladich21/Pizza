@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "../NotFoundBlock/styles.module.scss";
 
 const NotFoundBlock = () => {
